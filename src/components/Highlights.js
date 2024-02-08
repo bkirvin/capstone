@@ -1,8 +1,11 @@
 const Highlights = () => {
   return (
     <section className="mainCol" style={{marginTop: '100px'}}>
-      <div className="horizontalFrame">
+      <div className="horizontalFrame auto-spread">
         <h3>This Week's Specials!</h3>
+        <button>
+          <h5>Order Online</h5>
+        </button>
       </div>
       <div className="horizontalFrame md-gap">
         <article className="card cardGrid">

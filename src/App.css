@@ -284,6 +284,7 @@ button {
   width: 218px;
   height: 66px;
   border-radius: 16px;
+  border: none;
   background-color: #F4CE14;
   margin: 2vh;
 }
