@@ -2,14 +2,16 @@ import iconLogo from '../assets/iconLogo.png'
 
 const Footer = () => {
   return (
-    <footer>
-      <div className="horizontalFrame lg-gap center">
+    <footer className="fullCol" style={{gridRow: '6/7'}}>
+      <div className="fullCol horizontalFrameWrap lg-gap center">
+        <div className="imgFrame">
         <img
           src={iconLogo}
           alt="footer logo" />
+        </div>
         <section className="verticalFrame">
-          <h3>Navigation</h3>
-          <ul>
+          <div className="cardTitle neutral-txt">Navigation</div>
+          <ul className="highlight">
             <li>
               <a href="/">Home</a>
             </li>
@@ -31,8 +33,8 @@ const Footer = () => {
           </ul>
         </section>
         <section className="verticalFrame">
-          <h3>Contact</h3>
-          <ul>
+          <div className="cardTitle neutral-txt">Contact</div>
+          <ul className="highlight">
             <li>
               <a href="/address">Address</a>
             </li>
@@ -40,13 +42,13 @@ const Footer = () => {
               <a href="/phone">Phone</a>
             </li>
             <li>
-              <a href="/email">Enmail</a>
+              <a href="/email">Email</a>
             </li>
           </ul>
         </section>
         <section className="verticalFrame">
-          <h3>Social Media</h3>
-          <ul>
+          <div className="cardTitle neutral-txt">Social Media</div>
+          <ul className="highlight">
             <li>
               <a href="/facebook">Facebook</a>
             </li>
@@ -62,7 +64,10 @@ const Footer = () => {
           </ul>
         </section>
       </div>
-    </footer>
+  </footer>
+    // <footer style={{gridRow: '6/ span '}}>
+
+    // </footer>
   )
 }
 

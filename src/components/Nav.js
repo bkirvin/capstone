@@ -1,9 +1,10 @@
 const Nav = () => {
   return (
-    <nav className="nav">
-      <ul className="horizontalFrame md-gap">
+    <nav>
+      <ul className="horizontalFrame sm-gap">
         <li>
           <a
+            className="leading"
             href='/'
             alt="Home link"
             role="button">
@@ -11,6 +12,7 @@ const Nav = () => {
           </a>
         </li>
         <li><a
+            className="leading"
             href='/about'
             alt="About link"
             role="button">
@@ -18,6 +20,7 @@ const Nav = () => {
           </a>
         </li>
         <li><a
+            className="leading"
             href='/menu'
             alt="Menu link"
             role="button">
@@ -25,6 +28,7 @@ const Nav = () => {
           </a>
         </li>
         <li><a
+            className="leading"
             href='/reservations'
             alt="Reservations link"
             role="button">
@@ -32,6 +36,7 @@ const Nav = () => {
           </a>
         </li>
         <li><a
+            className="leading"
             href='/'
             alt="Order Online link"
             role="button">
@@ -39,6 +44,7 @@ const Nav = () => {
           </a>
         </li>
         <li><a
+            className="leading"
             href='/Login'
             alt="Login link"
             role="button">
