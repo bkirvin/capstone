@@ -1,7 +1,6 @@
-const Nav = () => {
+const TNav = () => {
   return (
-    <nav>
-      <ul className="horizontalFrame sm-gap">
+      <ul className="hFrame auto-spread center topNav">
         <li>
           <a
             className="leading"
@@ -40,7 +39,7 @@ const Nav = () => {
             href='/'
             alt="Order Online link"
             role="button">
-              Order Online
+              Order
           </a>
         </li>
         <li><a
@@ -52,8 +51,7 @@ const Nav = () => {
           </a>
         </li>
       </ul>
-    </nav>
   )
 }
 
-export default Nav
+export default TNav
