@@ -1,5 +1,5 @@
-import Header from '../components/test/Header'
-import Main from '../components/test/Main'
+import Header from '../components/Header'
+import Main from '../components/Main'
 
 const Test = () => {
   return (

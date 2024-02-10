@@ -1,4 +1,4 @@
-import { ReactComponent as Ham } from '../../assets/🦆 icon _hamburger menu.svg'
+import { ReactComponent as Ham } from '../assets/🦆 icon _hamburger menu.svg'
 
 const Hamburger = () => {
   return (

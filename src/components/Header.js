@@ -1,14 +1,21 @@
-import Nav from './Nav'
-import Logo from '../assets/Logo.svg'
+import TNav from './TNav'
+import Hamburger from './Hamburger'
 
 const Header = () => {
   return (
-    <header className="mainCol" style={{gridRow: '1/ span 1'}}>
-      <div className="horizontalFrameWrap sm-gap center">
-        <img
-          src={Logo}
-          alt="Little Lemon logo" />
-        <Nav />
+    <header>
+      <div className="row justify-content-center">
+        <div className="col-8">
+          <nav>
+            <div className="hFrame auto-space center">
+              <img
+                src={require('../assets/Logo x.png')}
+                alt="Lemon logo"></img>
+              <TNav />
+              <Hamburger />
+            </div>
+          </nav>
+        </div>
       </div>
     </header>
   )

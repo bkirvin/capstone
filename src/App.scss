@@ -17,7 +17,8 @@ html,
 body {
   font-family: 'Karla', sans-serif;
   width: 100vw;
-  overflow: hidden;
+  overflow-x: hidden;
+  user-select: none;
 }
 header {
   text-align: center;
@@ -30,49 +31,26 @@ header {
   }
 }
 
-nav {
-  .topNav {
-    width: 100%;
-  }
-  ul {
-    font-family: 'Karla', sans-serif;
-    list-style: none;
-  }
-
-  img {
-    display: inline;
-  }
-
-  a:link {
-    text-decoration: none;
-    color: $my-black;
-  }
-
-  a:visited {
-    text-decoration: none;
-    color: $my-black;
-  }
-
-  a:hover {
-    text-decoration: none;
-    color: $my-main;
-  }
-
-  a:active {
-    text-decoration: none;
-    color: $my-black;
-  }
-}
-
 .hFrame {
   height: 100%;
+  width: 100%;
   display: flex;
   flex-flow: row nowrap;
+  overflow-x: scroll;
+}
+
+.hFrameWrap {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 20px;
 }
 
 .vFrame {
+  height: 100%;
   display: flex;
-  flex-flow: col nowrap;
+  flex-flow: column nowrap;
 }
 
 .auto-space {
@@ -83,6 +61,17 @@ nav {
   justify-content: space-between;
 }
 
+.flx-left {
+  justify-content: flex-start;
+}
+.flx-bottom {
+  align-items: flex-end;
+}
+
+.flx-top {
+  align-items: flex-start;
+}
+
 .center {
   align-items: center;
 }
@@ -91,9 +80,64 @@ nav {
   gap: 2vh;
 }
 
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+nav {
+  .topNav {
+    width: 100%;
+  }
+  ul {
+    font-family: 'Karla', sans-serif;
+  }
+
+  img {
+    display: inline;
+  }
+
+  a:link {
+    color: $my-black;
+  }
+
+  a:visited {
+    color: $my-black;
+  }
+
+  a:hover {
+    color: $my-main;
+  }
+
+  a:active {
+    color: $my-black;
+  }
+}
+
+h3 {
+  font-family: 'Markazi Text', serif;
+  font-size: 3em !important;
+  font-weight: 500 !important;
+}
+
 .leading {
   font-family: 'Karla', sans-serif;
-  font-size: 16pt;
+  font-size: 1em;
 }
 
 .hamburger {
@@ -110,77 +154,250 @@ nav {
     width: 21vw;
     margin-left: -20vw;
   }
+  button {
+    margin: 6vh 0 1vh !important;
+  }
+}
+
+h1,
+h2 {
+  font-family: 'Markazi Text', serif;
+}
+
+.sign {
+  text-align: left;
+  width: 22vw;
+
+  h1 {
+    font-size: 3em;
+    color: $my-attention;
+    font-weight: 500;
+    line-height: 38px;
+    margin: 0;
+  }
+  h2 {
+    color: $my-neutral;
+    font-size: 2em;
+  }
+  p {
+    color: $my-neutral;
+  }
+}
+
+button {
+  border-radius: 16px !important;
+  border: none;
+  background-color: $my-attention;
+  width: 215px;
+  height: 66px;
+  margin: 2vh 0 !important;
+  font-size: 16pt;
+  font-weight: 700;
+}
+
+p {
+  font-size: 1em;
+  font-weight: 400;
+}
+
+.imgFrame {
+  position: absolute;
+  width: 350px;
+  height: 445px;
+  background-color: grey;
+  transform: translate(-100%, 0);
+  border-radius: 16px;
+}
+
+#highlights {
+  margin: 6vh 0;
+}
+.promo {
+  margin: 86px 0 56px !important;
+}
+
+.scard {
+  border-radius: 16px;
+  width: 286px;
+  height: 472px;
+  flex-shrink: 0;
+  background-color: $my-neutral;
+
+  .hero {
+    width: 100%;
+    max-height: 190px;
+    overflow: hidden;
+
+    img {
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+      max-width: 100%;
+      min-width: 100%;
+    }
+  }
+  .title {
+    font-size: 1.2em;
+    font-weight: 600;
+  }
+  .content {
+    display: inline-grid;
+    grid-template-rows: auto 160px auto;
+  }
+  p {
+    padding: 0 2vh;
+  }
+  .price {
+    margin: 20px 0;
+    color: $my-alert;
+    font-size: 16pt;
+    font-weight: 500;
+  }
+  .icon {
+    width: 29px;
+    height: 29px;
+  }
+}
+
+#testimony {
+  padding: 5vh 0;
+  background-color: $my-main;
+
+  .quote {
+    background-color: $my-neutral;
+    width: 240px;
+    height: 250px;
+    padding: 1vh 1vw;
+    flex-shrink: 0;
+
+    >:first-child {
+      height: 100px;
+    }
+
+    .avatar {
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      background-color: grey;
+    }
+    .name {
+      font-size: 20pt;
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 1em;
+    }
+
+    .rating {
+
+      img {
+        width:20px;
+      }
+    }
+  }
+}
+
+#about {
+  padding: 10vh 0;
   .sign {
     text-align: left;
     width: 29vw;
 
     h1,
     h2 {
-      font-family: 'Markiza Text', serif;
-      color: $my-neutral;
+      color: $my-black;
     }
     h1 {
-      color: $my-attention;
+      color: $my-black;
     }
     p {
-      color: $my-neutral;
+      color: $my-black;
     }
   }
-
-  button {
-    border-radius: 16px;
-    background-color: $my-attention;
-    width: 215px;
-    height: 66px;
-    border: none;
-    margin: 4vh 0;
+  img {
+    position: absolute;
+    width: 20vw;
   }
 }
 
-.imgFrame {
-  position: absolute;
-  width: 401px;
-  height: 401px;
-  background-color: grey;
-  transform: translate(-90%, 0);
-  border-radius: 16px;
+#gallery {
+  position: relative;
+  transform: translate(15vw, -10vh);
+}
+
+#top {
+  z-index: 100;
+  transform: translate(-60%, -20%);
+}
+
+footer {
+  background-color: $my-black;
+  color: $my-neutral;
+  padding: 10vh 0;
+
+  ul {
+    font-size: 18pt;
+    font-weight: 600;
+
+    >:first-child {
+      margin-top: 2vh;
+    }
+
+    li {
+      font-size: 16pt;
+      font-weight: 500;
+    }
+  }
+
+  a:link {
+    color: $my-neutral;
+  }
+
+  a:visited {
+    color: $my-tone;
+  }
+
+  a:hover {
+    color: $my-attention;
+  }
+
+  a:active {
+    color: $my-neutral;
+  }
 }
 
 @media only screen and (max-width: 992px) {
-  nav {
-    .topNav {
-      display: none !important;
-    }
-  }
-  .hamburger {
-    display: inline;
-  }
 
   #little-lemon-hero {
     p {
-      font-size: 10pt;
+      font-size: 1em;
     }
     .imgFrame {
       width: 272px;
-      height: 359px;
+      height: 436px;
     }
     .sign {
       width: 28vw;
     };
     button {
-      margin: 2vh 0;
+      margin: 2vh 0 !important;
     }
+  }
+
+  h3 {
+    font-size: 2.1em !important;
   }
 }
 
 @media only screen and (max-width: 768px) {
   #little-lemon-hero {
     .sign {
-      width: 34vw;
+      width: 27vw;
     }
     .imgFrame {
-      width: 272px;
-      transform: translate(-75%, 0);
+      width: 294px;
+      transform: translate(-90%, 0);
+      height: 400px;
     }
     .button {
       margin: 2vh 0;
@@ -190,12 +407,40 @@ nav {
 }
 
 @media only screen and (max-width: 576px) {
+  nav {
+    .topNav {
+      display: none !important;
+    }
+  }
+  .hamburger {
+    display: inline;
+  }
   #little-lemon-hero {
     .imgFrame {
       display: none;
     }
     .sign {
-      width: 40vw;
+      width: 100%;
     }
+  }
+  #about {
+    p {
+      font-size: 1em;
+    }
+    img {
+      position: relative;
+      width: 100%;
+    }
+    .sign {
+      width: 100%;
+    }
+  }
+  #gallery {
+    transform: unset;
+    align-items: center;
+  }
+
+  #top {
+    transform: unset;
   }
 }
