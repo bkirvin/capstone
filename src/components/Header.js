@@ -1,5 +1,7 @@
+import NavProvider from '../providers/NavProvider'
 import TNav from './TNav'
 import Hamburger from './Hamburger'
+import SNav from './SNav'
 
 const Header = () => {
   return (
@@ -11,8 +13,11 @@ const Header = () => {
               <img
                 src={require('../assets/Logo x.png')}
                 alt="Lemon logo"></img>
-              <TNav />
-              <Hamburger />
+              <NavProvider>
+                <TNav />
+                <SNav/>
+                <Hamburger />
+              </NavProvider>
             </div>
           </nav>
         </div>

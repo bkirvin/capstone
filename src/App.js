@@ -1,12 +1,15 @@
-import './App.scss';
-import Landing from './layouts/Landing'
-// import Test from './layouts/Test'
+import './css/App.scss';
+import { Routes, Route } from 'react-router-dom'
+import Landing from './pages/Landing'
+import Reservation from './pages/Reservation'
 
 function App() {
   return (
     <>
-      {/* <Test /> */}
-      <Landing />
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/reservations" element={<Reservation />} />
+      </Routes>
     </>
   );
 }

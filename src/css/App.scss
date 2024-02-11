@@ -29,6 +29,36 @@ header {
   ul{
     margin: unset;
   }
+  .snav {
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+    border-top: 2px solid $my-main;
+    border-left: 2px solid $my-main;
+    border-bottom: 2px solid $my-main;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: calc(100vh - 45px);
+    background-color: $my-tone;
+    padding: 4vh;
+    width: 50vw;
+
+    .leading {
+      font-size: 1.2em;
+    }
+
+    ul {
+      padding: 0;
+    }
+    li {
+      border-top: 2px solid $my-main;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+  }
 }
 
 .hFrame {
@@ -263,7 +293,7 @@ p {
   background-color: $my-main;
 
   .quote {
-    background-color: $my-neutral;
+    background-color: $my-tone;
     width: 240px;
     height: 250px;
     padding: 1vh 1vw;
@@ -289,6 +319,7 @@ p {
     }
 
     .rating {
+      background-color: $my-neutral;
 
       img {
         width:20px;
@@ -338,6 +369,7 @@ footer {
   ul {
     font-size: 18pt;
     font-weight: 600;
+    padding: 0;
 
     >:first-child {
       margin-top: 2vh;
@@ -363,6 +395,47 @@ footer {
 
   a:active {
     color: $my-neutral;
+  }
+}
+
+#reserve-top {
+  background-color: $my-main;
+  height: 275px;
+  padding:2vh 0;
+
+  article {
+    height:calc(275px - 4vh);
+  }
+
+  .prompt {
+    background-color: $my-attention;
+    width: 68vw;
+    text-align: center;
+    border-radius: 16px;
+    font-size: 1.2em;
+    font-weight: 700;
+    padding: 1vh 2vw;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+  .circle {
+    align-items: center;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background-color: #f4ce14;
+    display: flex;
+    justify-content: space-around;
+    border: 6px solid $my-black;
+    flex-shrink: 0;
+    color: $my-main;
+    font-size: 2em;
+    font-weight: 700;
+  }
+  .stepconnector {
+    height: 2vh;
+    background-color: $my-black;
   }
 }
 
@@ -414,6 +487,8 @@ footer {
   }
   .hamburger {
     display: inline;
+    position: absolute;
+    right: 4vw;
   }
   #little-lemon-hero {
     .imgFrame {
