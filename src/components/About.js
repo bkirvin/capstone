@@ -1,4 +1,4 @@
-import LemonSign from './LemonSign'
+import LemonSign from './nav/LemonSign'
 
 const About = () => {
   return (

@@ -4,11 +4,11 @@ import Footer from '../components/Footer'
 
 const Landing = () => {
   return (
-    <div className="grid">
+    <article>
       <Header />
       <Main />
       <Footer />
-    </div>
+    </article>
   )
 }
 

@@ -1,18 +1,18 @@
 import NavProvider from '../providers/NavProvider'
-import TNav from './TNav'
+import TNav from './nav/TNav'
 import Hamburger from './Hamburger'
-import SNav from './SNav'
+import SNav from './nav/SNav'
 
 const Header = () => {
   return (
     <header>
-      <div className="row justify-content-center">
+      <section className="row justify-content-center">
         <div className="col-8">
+          <img
+            src={require('../assets/Logo x.png')}
+            alt="Lemon logo"></img>
           <nav>
               <div className="hFrame auto-space center">
-                <img
-                  src={require('../assets/Logo x.png')}
-                  alt="Lemon logo"></img>
                   <NavProvider>
                     <TNav />
                     <SNav />
@@ -21,7 +21,7 @@ const Header = () => {
               </div>
           </nav>
         </div>
-      </div>
+      </section>
     </header>
   )
 }

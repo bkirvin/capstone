@@ -1,4 +1,4 @@
-import Step from '../components/Step'
+import Step from '../Step'
 
 const ReserveTop = (props) => {
   return (

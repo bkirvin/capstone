@@ -9,10 +9,10 @@ const Step = (props) => {
           <div className="hFrame auto-spread">
             {steps.map((step, index) => {
               return ((index + 1) < steps.length) ? (
-                <div key={index} className="hFrame auto-spread center">
+                <div key={ index } className="hFrame auto-spread center">
                   <span
                     className="circle"
-                    style={{backgroundColor: (index + 1) <= props.step ? '#F4CE14': '#EDEFEE'}}
+                    style={{ backgroundColor: (index + 1) <= props.step ? '#F4CE14': '#EDEFEE' }}
                     >{step}</span>
                   <span
                     className="stepconnector"

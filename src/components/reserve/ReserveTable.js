@@ -1,4 +1,4 @@
-import ReserveTop from '../components/ReserveTop'
+import ReserveTop from './ReserveTop'
 
 const ReserveTable = () => {
 

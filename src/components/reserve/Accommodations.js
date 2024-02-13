@@ -1,4 +1,4 @@
-import { useGlobalContext } from '../providers/GlobalProvider'
+import { useGlobalContext } from '../../providers/GlobalProvider'
 import { useRef } from 'react'
 
 const Accommodations = () => {
@@ -81,24 +81,24 @@ const Accommodations = () => {
   }
   return (
     <>
-      <div className="hFrame center">
+      <section className="hFrame center">
         <input id="wheelchair" type="checkbox" name="wheelchair" value="true" onChange={changeWheelchair}></input>
         <label htmlFor="wheelchair">Wheelchair Access</label>
-      </div>
-      <div className="hFrame auto-spread center">
+      </section>
+      <section className="hFrame auto-spread center">
         <div className="hFrame center">
           <input id="highchair" type="checkbox" name="highchair" value="true" onChange={changeHighchair}></input>
           <label htmlFor="highchair">Highchair</label>
         </div>
         <ChairCount show={highchair.requested}/>
-      </div>
-      <div className="hFrame auto-spread center">
+      </section>
+      <section className="hFrame auto-spread center">
         <div className="hFrame center">
           <input id="booster" type="checkbox" name="booster" value="true" onChange={changeBooster}></input>
           <label htmlFor="booster">Booster Seat</label>
         </div>
         <SeatCount show={booster.requested}/>
-      </div>
+      </section>
     </>
   )
 }
