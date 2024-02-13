@@ -4,7 +4,7 @@ const ReserveTable = () => {
 
   return (
     <>
-      <ReserveTop step={1} />
+      <ReserveTop step={1} title="Please provide the following information to reserve your table." />
     </>
   )
 }

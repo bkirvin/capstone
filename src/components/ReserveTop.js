@@ -3,9 +3,10 @@ import Step from '../components/Step'
 const ReserveTop = (props) => {
   return (
     <section id="reserve-top" className="row justify-content-center">
-      <div className="col-8">
+      <div className="col-10 col-md-8">
         <Step step={props.step}/>
-        <div className="prompt">Please provide the following information to reserve your table.</div>
+        <h1>Table Reservation</h1>
+        <div className="prompt">{props.title}</div>
       </div>
     </section>
   )
