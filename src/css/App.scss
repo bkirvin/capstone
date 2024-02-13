@@ -29,10 +29,41 @@ header {
   ul{
     margin: unset;
   }
+  .snav {
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+    border-top: 2px solid $my-main;
+    border-left: 2px solid $my-main;
+    border-bottom: 2px solid $my-main;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    height: 50vh;
+    background-color: $my-tone;
+    padding: 4vh;
+    width: 50vw;
+    box-shadow: 0 0 8px grey;
+    z-index: 9;
+
+    .leading {
+      font-size: 1.2em;
+    }
+
+    ul {
+      padding: 0;
+    }
+    li {
+      border-top: 2px solid $my-main;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+  }
 }
 
 .hFrame {
-  height: 100%;
   width: 100%;
   display: flex;
   flex-flow: row nowrap;
@@ -40,7 +71,6 @@ header {
 }
 
 .hFrameWrap {
-  height: 100%;
   width: 100%;
   display: flex;
   flex-flow: row wrap;
@@ -144,6 +174,12 @@ h3 {
   display: none;
 }
 
+button:disabled,
+input:disabled {
+  opacity: 0.5;
+}
+
+
 #little-lemon-hero {
   padding: 2vh 0;
   background-color: $my-main;
@@ -164,12 +200,15 @@ h2 {
   font-family: 'Markazi Text', serif;
 }
 
+h1 {
+  font-size: 3em !important;
+}
+
 .sign {
   text-align: left;
   width: 22vw;
 
   h1 {
-    font-size: 3em;
     color: $my-attention;
     font-weight: 500;
     line-height: 38px;
@@ -264,6 +303,7 @@ p {
 
   .quote {
     background-color: $my-neutral;
+    border-radius: 16px;
     width: 240px;
     height: 250px;
     padding: 1vh 1vw;
@@ -289,6 +329,7 @@ p {
     }
 
     .rating {
+      background-color: $my-neutral;
 
       img {
         width:20px;
@@ -338,6 +379,7 @@ footer {
   ul {
     font-size: 18pt;
     font-weight: 600;
+    padding: 0;
 
     >:first-child {
       margin-top: 2vh;
@@ -363,6 +405,150 @@ footer {
 
   a:active {
     color: $my-neutral;
+  }
+}
+
+#reserve-top {
+  background-color: $my-main;
+  height: 275px;
+  padding:2vh 0;
+  text-align: center;
+  color: $my-neutral;
+
+
+  article {
+    height:calc(145px - 4vh);
+  }
+
+  .prompt {
+    background-color: $my-attention;
+    color: $my-black;
+    width: 68vw;
+    text-align: center;
+    border-radius: 16px;
+    font-size: 1.2em;
+    font-weight: 700;
+    padding: 1vh 2vw;
+    margin-top: calc(93px - 4vh);
+    margin: 0 auto;
+  }
+  .circle {
+    align-items: center;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background-color: #f4ce14;
+    display: flex;
+    justify-content: space-around;
+    border: 6px solid $my-black;
+    flex-shrink: 0;
+    color: $my-main;
+    font-size: 2em;
+    font-weight: 700;
+  }
+  .stepconnector {
+    height: 2vh;
+    background-color: $my-black;
+    width: 100%;
+  }
+}
+
+form {
+  text-align: center;
+
+  input,
+  select {
+    padding: 1vh;
+    border-radius: 16px;
+    border: 2px solid $my-main;
+    color: $my-main;
+  }
+  label {
+    margin: 0 0 0 2vw;
+    text-align: left;
+    display: block;
+  }
+
+  h6 {
+    text-align: left;
+  }
+
+  fieldset {
+    margin: 15vh 0;
+  }
+}
+
+.unavailable,
+.selected {
+  background-color: $my-alert;
+  padding: 1vh 6vw;
+  color: $my-tone;
+  font-weight: 700;
+  text-shadow: 2px 2px 2px $my-black;
+  font-size: 2em;
+}
+
+.selected {
+  background-color: $my-main;
+  color: $my-neutral;
+  padding: 1vh 8vw;
+}
+
+#wheelchair,
+#highchair,
+#booster {
+  height: 5vh;
+}
+
+.slotbox {
+  width: 100%;
+  height: 250px;
+
+  >* {
+    flex-shrink: 0;
+    height: 80px;
+    overflow: hidden;
+    border-bottom: 1px solid $my-main;
+    padding: 0 2vw;
+
+    // :nth-child(2) {
+    //   color: $my-alert;
+    //   background-color: $my-attention;
+    //   border-radius: 16px;
+    //   padding: 6px;
+    //   width:20vw;
+    //   font-size: 2em;
+    //   font-weight: 600;
+    //   text-shadow: 2px 2px 2px $my-black;
+    // }
+  }
+}
+
+#itinerary {
+  margin-top: 5vh;
+  text-align: center;
+
+  .accommodation {
+    font-weight: 500;
+    border-bottom: 1px solid $my-black;
+  }
+  .col-4,
+  .col-8 {
+    >* {
+      margin: 2vh 0;
+    }
+  }
+}
+
+.checked {
+  margin: 20vh auto;
+  width: 317px;
+  text-align: center;
+}
+
+#accommodations {
+  >*{
+    padding: 2vh 0;
   }
 }
 
@@ -399,21 +585,43 @@ footer {
       transform: translate(-90%, 0);
       height: 400px;
     }
-    .button {
-      margin: 2vh 0;
-    }
   }
 
+  button {
+    width: 140px;
+    height: 50px;
+    margin: 2vh 0;
+  }
+
+  .unavailable,
+  .selected {
+    font-size: 1em;
+  }
+
+  .checked {
+    margin: 10vh auto;
+  }
 }
 
 @media only screen and (max-width: 576px) {
+
+  h3 {
+    font-size: 1.8em !important;
+  }
   nav {
     .topNav {
       display: none !important;
     }
   }
   .hamburger {
-    display: inline;
+    display: block;
+    position: fixed;
+    right: 4vw;
+    bottom: 2vh;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: white;
+    z-index: 10;
   }
   #little-lemon-hero {
     .imgFrame {
@@ -442,5 +650,29 @@ footer {
 
   #top {
     transform: unset;
+  }
+  #reserve-top {
+    h1 {
+      font-size: 2.5em !important;
+    }
+    .prompt {
+      margin-top: calc(75px - 4vh);
+    }
+    .circle {
+      width: 42px;
+      height: 42px;
+    }
+  }
+
+  button {
+    width: 125px;
+    height: 40px;
+    font-size: 0.7em !important;
+  }
+
+  .unavailable,
+  .selected {
+    padding: 9px;
+    font-size: 0.7em;
   }
 }

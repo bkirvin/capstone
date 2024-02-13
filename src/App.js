@@ -1,12 +1,19 @@
-import './App.scss';
-import Landing from './layouts/Landing'
-// import Test from './layouts/Test'
+import './css/App.scss';
+import { Routes, Route } from 'react-router-dom'
+import Landing from './pages/Landing'
+import Reservation from './pages/Reservation'
+import Confirm from './pages/Confirm'
+import Verify from './pages/Verify'
 
 function App() {
   return (
     <>
-      {/* <Test /> */}
-      <Landing />
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/reservations" element={<Reservation />} />
+        <Route path="/confirm" element={<Confirm />} />
+        <Route path="/verify" element={<Verify />} />
+      </Routes>
     </>
   );
 }

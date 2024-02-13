@@ -62,7 +62,7 @@ const Testimonials = () => {
                   by setting grid-row-end to more than one row track away.</p>
               </article>
               <article className="quote">
-                <div className="hFrame auto-spread center">
+                <div className="hFrame auto-space center">
                   <img
                     src={require('../assets/headshot3.png')}
                     alt="profile"

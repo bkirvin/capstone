@@ -1,4 +1,5 @@
 import LemonSign from './LemonSign'
+import { Link } from 'react-router-dom'
 
 const Hero = () => {
   const heroPic = {
@@ -24,7 +25,9 @@ const Hero = () => {
       </div>
       <div className="row justify-content-center">
         <div className="col-8">
-          <button>Reserve a Table</button>
+          <Link
+            to="/reservations">
+              <button>Reserve a Table</button></Link>
         </div>
       </div>
     </section>
