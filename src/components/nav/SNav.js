@@ -1,4 +1,4 @@
-import { useNavContext } from '../providers/NavProvider'
+import { useNavContext } from '../../providers/NavProvider'
 import LinkList from './LinkList'
 
 const SNav = () => {

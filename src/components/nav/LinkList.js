@@ -1,4 +1,4 @@
-import { useNavContext } from '../providers/NavProvider'
+import { useNavContext } from '../../providers/NavProvider'
 import { Link } from 'react-router-dom'
 
 const LinkList = () => {

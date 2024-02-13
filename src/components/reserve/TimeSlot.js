@@ -1,19 +1,14 @@
-import { useGlobalContext } from '../providers/GlobalProvider'
+import { useGlobalContext } from '../../providers/GlobalProvider'
 import { useEffect, useRef } from 'react'
 
 const TimeSlot = (props) => {
 
   let button = useRef()
 
-  const { timeSlots, setTimeSlots, setFormData } = useGlobalContext()
+  const { timeSlots, dispatch, setFormData } = useGlobalContext()
 
   const select = (e) => {
-    setTimeSlots(prevState => {
-      const state = [...prevState]
-      const slot = state.find(x => x.time === props.slot.time)
-      slot.selected = true
-      return state
-    })
+    dispatch({time: props.slot.time})
     setFormData(prevState => {
       const state = {...prevState}
       state.timeSlot = props.slot.time
@@ -23,10 +18,10 @@ const TimeSlot = (props) => {
 
   const undoSelect = (e) => {
     e.preventDefault()
-    setTimeSlots(prevState => {
-      const state = [...prevState]
-      const slot = state.find(x => x.time === props.slot.time)
-      slot.selected = false
+    dispatch({ type: 'undo', time: props.slot.time })
+    setFormData (prevState => {
+      const state = {...prevState}
+      state.timeSlot = ""
       return state
     })
   }
@@ -48,6 +43,7 @@ const TimeSlot = (props) => {
   }
 
   useEffect(() => {
+    console.log('button', button.current)
     if (button.current) button.current.disabled = timeSlots.some(x => x.selected)
   }, [timeSlots])
   return (

@@ -1,5 +1,5 @@
 import Header from '../components/Header'
-import ReserveTop from '../components/ReserveTop'
+import ReserveTop from '../components/reserve/ReserveTop'
 import Verified from '../components/Verified'
 import Footer from '../components/Footer'
 

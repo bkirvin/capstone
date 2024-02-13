@@ -5,7 +5,7 @@ const Footer = () => {
     <footer>
       <div className="row justify-content-center">
         <div className="col-8">
-          <div className="hFrameWrap auto-spread flx-top">
+          <article className="hFrameWrap auto-spread flx-top">
             <div>
               <img
                 src={iconLogo}
@@ -62,7 +62,7 @@ const Footer = () => {
                 </li>
               </ul>
             </section>
-          </div>
+          </article>
         </div>
       </div>
   </footer>

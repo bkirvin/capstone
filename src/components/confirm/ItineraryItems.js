@@ -1,4 +1,4 @@
-import { useGlobalContext } from '../providers/GlobalProvider'
+import { useGlobalContext } from '../../providers/GlobalProvider'
 
 const ItineraryItems = () => {
 

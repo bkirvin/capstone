@@ -1,20 +1,20 @@
 import Header from '../components/Header'
-import ReserveTable from '../components/ReserveTable'
-import ReserveForm from '../components/ReserveForm'
+import ReserveTable from '../components/reserve/ReserveTable'
+import ReserveForm from '../components/reserve/ReserveForm'
 import Footer from '../components/Footer'
 
 const Reservation = () => {
 
 
   return (
-    <>
+    <article>
       <Header />
       <main>
         <ReserveTable />
         <ReserveForm />
         <Footer />
       </main>
-    </>
+    </article>
   )
 }
 
