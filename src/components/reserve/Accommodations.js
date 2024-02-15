@@ -80,26 +80,27 @@ const Accommodations = () => {
     })
   }
   return (
-    <>
-      <section className="hFrame center">
+    <section>
+      <h3>Will you need special accommodations?</h3>
+      <div className="hFrame center">
         <input id="wheelchair" type="checkbox" name="wheelchair" value="true" onChange={changeWheelchair}></input>
         <label htmlFor="wheelchair">Wheelchair Access</label>
-      </section>
-      <section className="hFrame auto-spread center">
+      </div>
+      <div className="hFrame auto-spread center">
         <div className="hFrame center">
           <input id="highchair" type="checkbox" name="highchair" value="true" onChange={changeHighchair}></input>
           <label htmlFor="highchair">Highchair</label>
         </div>
         <ChairCount show={highchair.requested}/>
-      </section>
-      <section className="hFrame auto-spread center">
+      </div>
+      <div className="hFrame auto-spread center">
         <div className="hFrame center">
           <input id="booster" type="checkbox" name="booster" value="true" onChange={changeBooster}></input>
           <label htmlFor="booster">Booster Seat</label>
         </div>
         <SeatCount show={booster.requested}/>
-      </section>
-    </>
+      </div>
+    </section>
   )
 }
 

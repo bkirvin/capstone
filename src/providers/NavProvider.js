@@ -12,7 +12,7 @@ const NavProvider = ({ children }) => {
     },
     {
       name: 'About',
-      href: '/about'
+      href: '/#about'
     },
     {
       name: 'Menu',

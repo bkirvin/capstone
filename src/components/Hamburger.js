@@ -1,4 +1,4 @@
-import { ReactComponent as Ham } from '../assets/🦆 icon _hamburger menu.svg'
+import { ReactComponent as Ham } from '../assets/icon _hamburger menu.svg'
 import { useNavContext } from '../providers/NavProvider'
 
 const Hamburger = () => {
