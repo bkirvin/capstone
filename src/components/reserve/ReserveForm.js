@@ -1,13 +1,15 @@
 import { useGlobalContext } from '../../providers/GlobalProvider'
-import TimeSlot from './TimeSlot'
+import TimeSlotSelect from './TimeSlotSelect'
 import Accommodations from './Accommodations'
 import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
+import Slots from '../../json/timeSlots.json'
 
 const ReserveForm = () => {
 
   const navigate = useNavigate()
 
-  const { formData, setFormData } = useGlobalContext()
+  const { formData, setFormData, dispatch } = useGlobalContext()
   const { timeSlots } = useGlobalContext()
 
   const handleDate = (e) => {
@@ -58,42 +60,77 @@ const ReserveForm = () => {
     })
   }
 
+  // const isValid = () => {
+  //   console.log('formData', formData)
+  //   return (
+  //     formData.firstName &&
+  //     formData.lastName &&
+  //     formData.email &&
+  //     formData.date &&
+  //     formData.timeSlot &&
+  //     formData.partyNum
+  //   )
+  // }
+
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log('submitting', formData)
     navigate('/confirm')
   }
 
+  const fetchData = date => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const schedule = localStorage.getItem(date)
+        if (schedule) {
+          console.log('local exists', schedule)
+          resolve(schedule)
+        } else {
+          console.log('no local getting remote')
+          const slots = Slots.timeSlots
+          slots.forEach(slot => {
+            slot.reserved = Math.random() < 0.4 ? true : false
+          })
+          const result = JSON.stringify(slots)
+          console.log('result', result)
+          localStorage.setItem(date, result)
+          resolve(result)
+        }
+      }, Math.random() * 1000)
+    })
+  }
+  const todayDate = () => {
+    const date = new Date(Date.now())
+    const year = date.toLocaleString('default', { year: 'numeric' })
+    const month = date.toLocaleString('default', { month: '2-digit' })
+    const day = date.toLocaleString('default', { day: '2-digit' })
+    return [year, month, day].join('-')
+  }
+
+  useEffect(() => {
+    fetchData(formData.date || todayDate())
+      .then(response => JSON.parse(response))
+      .then(formatted => dispatch({type: 'set', data: formatted}))
+  }, [dispatch, formData.date])
+
   return (
-    <article>
-      <form className="row justify-content-center" onSubmit={handleSubmit}>
+    <article id="input-section">
+      <form data-testid="frm" className="row justify-content-center" onSubmit={handleSubmit}>
         <div className="col-10 col-md-8">
           <fieldset>
             <h3>When will you be dining with us?</h3>
             <input
+              data-testid="date"
               type="date"
               required
               value={formData.date}
+              min={formData.date}
               onChange={handleDate}></input>
           </fieldset>
-          <fieldset>
-            <div className="hFrame auto-spread center">
-              <h6>SELECT TIME SLOT</h6>
-              <input id="timeslot" type="text" value={formData.timeSlot} required readOnly/>
-            </div>
-            <div className="hFrame auto-spread">
-              <div className="vFrame slotbox">
-                {timeSlots.map(slot => {
-                  return (
-                    <TimeSlot key={slot.time} slot={slot}/>
-                  )
-                })}
-              </div>
-            </div>
-          </fieldset>
+          <TimeSlotSelect timeSlots={timeSlots}/>
           <fieldset>
             <h3>How many will be dining?</h3>
-            <input required type="number" min="2" max="10" value={formData.partyNum} onChange={changeDining}></input>
+            <input data-testid="dining" required type="number" min="2" max="10" value={formData.partyNum} onChange={changeDining}></input>
           </fieldset>
           <fieldset>
             <h3>Will this be a special occasion?</h3>
@@ -113,22 +150,23 @@ const ReserveForm = () => {
             </div>
           </fieldset>
           <fieldset className="container">
+            <h3>Please provide your contact information</h3>
             <div className="hFrameWrap auto-spread center">
               <div>
                 <label htmlFor="firstName">First Name</label>
-                <input id="firstName" required type="text" value={formData.firstName} onChange={changeFirstName}></input>
+                <input data-testid="firstName" id="firstName" required type="text" value={formData.firstName} onChange={changeFirstName}></input>
               </div>
               <div>
                 <label htmlFor="lastName">Last Name</label>
-                <input id="lastName" required type="text" value={formData.lastName} onChange={changeLastName}></input>
+                <input data-testid="lastName" id="lastName" required type="text" value={formData.lastName} onChange={changeLastName}></input>
               </div>
               <div>
                 <label htmlFor="email">Email</label>
-                <input id="email" required type="email" value={formData.email} onChange={changeEmail}></input>
+                <input data-testid="email" id="email" required type="email" value={formData.email} onChange={changeEmail}></input>
               </div>
             </div>
           </fieldset>
-            <button type="submit">CONTINUE</button>
+            <button data-testid="formbtn" type="submit">CONTINUE</button>
         </div>
       </form>
     </article>

@@ -4,14 +4,10 @@ import { useGlobalContext } from '../providers/GlobalProvider'
 
 const Verified = () => {
 
-  const { formData, highchair, booster, clearForm } = useGlobalContext()
+  const { clearForm } = useGlobalContext()
 
   useEffect (() => {
     clearForm()
-    console.log('formData', formData)
-    console.log('highchair', highchair)
-    console.log('booster', booster)
-
   }, [])
   return (
     <div className="checked">

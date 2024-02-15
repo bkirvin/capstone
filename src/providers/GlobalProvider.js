@@ -24,44 +24,6 @@ const GlobalProvider = ({children}) => {
     wheelchair: false
   }
 
-  const initSlots = [
-    {
-      time: '6:00 PM',
-      reserved: false,
-      selected: false
-    },
-    {
-      time: '6:30 PM',
-      reserved: true,
-      selected: false
-    },
-    {
-      time: '7:00 PM',
-      reserved: false,
-      selected: false
-    },
-    {
-      time: '7:30 PM',
-      reserved: false,
-      selected: false
-    },
-    {
-      time: '8:00 PM',
-      reserved: true,
-      selected: false
-    },
-    {
-      time: '8:30 PM',
-      reserved: false,
-      selected: false
-    },
-    {
-      time: '9:00 PM',
-      reserved: false,
-      selected: false
-    }
-  ]
-
   const initBooster = {
     requested: false,
     num: 1
@@ -73,38 +35,48 @@ const GlobalProvider = ({children}) => {
   }
 
   const clearForm = () => {
-    dispatch({type: 'clear'})
-    setFormData({...initData})
-    setHighchair({...initHighchair})
-    setBooster({...initBooster})
+    dispatch({ type: 'reset' })
+    setFormData({ ...initData })
+    setHighchair({ ...initHighchair })
+    setBooster({ ...initBooster })
   }
 
   const reducer = (state, action) => {
-    console.log('state', state)
-    console.log('action', action)
     let slot
-    const nState = [...state]
+    let nState = state.length ? [...state] : []
     switch(action.type) {
-      case 'clear':
-        const found = nState.find(x => x.selected)
-        if (found) {
-          found.reserved = true
-          found.selected = false
+      case 'reset':
+        slot = nState.find(x => x.selected)
+        if (slot) {
+          slot.selected = false
         }
-        console.log('found', found)
+        return nState
+      case 'update':
+        console.log('UPDATING')
+        slot = nState.find(x => x.selected)
+        if (slot) {
+          console.log('slot found', slot)
+          slot.reserved = true
+          slot.selected = false
+        }
+        return nState
+      case 'set':
+        nState = action.data
         return nState
       case 'undo':
         slot = nState.find(x => x.time === action.time)
         slot.selected = false
         return nState
       default :
-        slot = nState.find(x => x.time === action.time)
-        slot.selected = true
+        if (nState.length) {
+          slot = nState.find(x => x.time === action.time)
+          slot.selected = true
+        }
         return nState
     }
   }
 
-  const [ timeSlots, dispatch ] = useReducer(reducer, [...initSlots])
+  const [ timeSlots, dispatch ] = useReducer(reducer, [])
 
   const occasions = useRef([
     'Anniversary',
@@ -113,11 +85,11 @@ const GlobalProvider = ({children}) => {
     'Reception'
   ])
 
-  const [ formData, setFormData ] = useState({...initData})
+  const [ formData, setFormData ] = useState({ ...initData })
 
-  const [ booster, setBooster ] = useState({...initBooster})
+  const [ booster, setBooster ] = useState({ ...initBooster })
 
-  const [ highchair, setHighchair ] = useState({...initHighchair})
+  const [ highchair, setHighchair ] = useState({ ...initHighchair })
 
   const icon = require('../assets/bike.png')
 

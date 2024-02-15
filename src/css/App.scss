@@ -160,9 +160,8 @@ nav {
 }
 
 h3 {
-  font-family: 'Markazi Text', serif;
-  font-size: 3em !important;
   font-weight: 500 !important;
+  padding: 4vh 0;
 }
 
 .leading {
@@ -249,7 +248,7 @@ p {
 }
 
 #highlights {
-  margin: 6vh 0;
+  margin: 8vh 0 6vh;
 }
 .promo {
   margin: 86px 0 56px !important;
@@ -438,7 +437,6 @@ footer {
     font-weight: 700;
     padding: 1vh 2vw;
     margin-top: calc(93px - 4vh);
-    margin: 0 auto;
   }
   .circle {
     align-items: center;
@@ -461,8 +459,13 @@ footer {
   }
 }
 
+#input-section {
+  margin-top: 10vh;
+}
+
 form {
   text-align: center;
+  margin: 5vh 0;
 
   input,
   select {
@@ -493,7 +496,8 @@ form {
 .unavailable,
 .selected {
   background-color: $my-alert;
-  padding: 1vh 6vw;
+  padding: 1vh 0;
+  width: 26vw;
   color: $my-tone;
   font-weight: 700;
   text-shadow: 2px 2px 2px $my-black;
@@ -503,7 +507,6 @@ form {
 .selected {
   background-color: $my-main;
   color: $my-neutral;
-  padding: 1vh 8vw;
 }
 
 #wheelchair,
@@ -544,8 +547,8 @@ form {
     font-weight: 500;
     border-bottom: 1px solid $my-black;
   }
-  .col-4,
-  .col-8 {
+  .col-md-4,
+  .col-10 {
     >* {
       margin: 2vh 0;
     }
@@ -584,6 +587,12 @@ form {
 
   h3 {
     font-size: 2.1em !important;
+  }
+
+  .unavailable,
+  .selected {
+    padding: 1vh;
+    font-size: 1.7em;
   }
 }
 
@@ -681,6 +690,7 @@ form {
     .circle {
       width: 42px;
       height: 42px;
+      font-size: unset;
     }
   }
 

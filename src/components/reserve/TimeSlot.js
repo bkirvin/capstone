@@ -35,18 +35,17 @@ const TimeSlot = (props) => {
   }
 
   const Button = () => {
-    return !props.slot.reserved && !props.slot.selected ? <button onClick={select} ref={button}>SELECT</button> : <button disabled style={{display: props.slot.selected ? 'none' : 'inline'}}>SELECT</button>
+    useEffect(() => {
+      if (button.current) button.current.disabled = timeSlots.some(x => x.selected)
+    }, [])
+    return !props.slot.reserved && !props.slot.selected ? <button data-testid={props.slot.time} onClick={select} ref={button}>SELECT</button> : <button disabled style={{display: props.slot.selected ? 'none' : 'inline'}}>SELECT</button>
   }
 
   const Undo = () => {
     return props.slot.selected ? <button onClick={undoSelect}>UNDO</button> : <></>
   }
 
-  useEffect(() => {
-    console.log('button', button.current)
-    if (button.current) button.current.disabled = timeSlots.some(x => x.selected)
-  }, [timeSlots])
-  return (
+  return (timeSlots && timeSlots.length ?
       <div className="hFrame auto-spread center">
         <span>{props.slot.time}</span>
         <Unavailable />
@@ -54,6 +53,8 @@ const TimeSlot = (props) => {
         <Button />
         <Undo />
       </div>
+      :
+      <></>
   )
 }
 

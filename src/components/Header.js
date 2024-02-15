@@ -8,18 +8,19 @@ const Header = () => {
     <header>
       <section className="row justify-content-center">
         <div className="col-8">
-          <img
-            src={require('../assets/Logo x.png')}
-            alt="Lemon logo"></img>
-          <nav>
-              <div className="hFrame auto-space center">
-                  <NavProvider>
-                    <TNav />
-                    <SNav />
-                    <Hamburger />
-                  </NavProvider>
-              </div>
-          </nav>
+          <div className="hFrame auto-space center">
+            <img
+              data-testid="logo"
+              src={require('../assets/Logo x.png')}
+              alt="Lemon logo"></img>
+            <nav className="hFrame">
+              <NavProvider>
+                <TNav />
+                <SNav />
+                <Hamburger />
+              </NavProvider>
+            </nav>
+          </div>
         </div>
       </section>
     </header>
