@@ -2,18 +2,19 @@ import { useGlobalContext } from '../../providers/GlobalProvider'
 import TimeSlotSelect from './TimeSlotSelect'
 import Accommodations from './Accommodations'
 import { useNavigate } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import Slots from '../../json/timeSlots.json'
 
 const ReserveForm = () => {
 
   const navigate = useNavigate()
 
-  const { formData, setFormData, dispatch } = useGlobalContext()
+  const datebtn = useRef()
+
+  const { formData, setFormData, dispatch, setSlotError } = useGlobalContext()
   const { timeSlots } = useGlobalContext()
 
   const handleDate = (e) => {
-    console.log('target date format', e.target.value, typeof e.target.value)
     setFormData(prevState => {
       const state = {...prevState}
       state.date = e.target.value
@@ -60,21 +61,9 @@ const ReserveForm = () => {
     })
   }
 
-  // const isValid = () => {
-  //   console.log('formData', formData)
-  //   return (
-  //     formData.firstName &&
-  //     formData.lastName &&
-  //     formData.email &&
-  //     formData.date &&
-  //     formData.timeSlot &&
-  //     formData.partyNum
-  //   )
-  // }
-
   const handleSubmit = (e) => {
+    console.log("SUBMIT")
     e.preventDefault()
-    console.log('submitting', formData)
     navigate('/confirm')
   }
 
@@ -83,16 +72,13 @@ const ReserveForm = () => {
       setTimeout(() => {
         const schedule = localStorage.getItem(date)
         if (schedule) {
-          console.log('local exists', schedule)
           resolve(schedule)
         } else {
-          console.log('no local getting remote')
           const slots = Slots.timeSlots
           slots.forEach(slot => {
             slot.reserved = Math.random() < 0.4 ? true : false
           })
           const result = JSON.stringify(slots)
-          console.log('result', result)
           localStorage.setItem(date, result)
           resolve(result)
         }
@@ -107,7 +93,14 @@ const ReserveForm = () => {
     return [year, month, day].join('-')
   }
 
+  const validate = e => {
+    console.log('validating', formData.timeSlot)
+    if(!formData.timeSlot) setSlotError('Please enter a time for your reservation.')
+    else setSlotError('')
+  }
+
   useEffect(() => {
+    datebtn.current.focus()
     fetchData(formData.date || todayDate())
       .then(response => JSON.parse(response))
       .then(formatted => dispatch({type: 'set', data: formatted}))
@@ -119,18 +112,23 @@ const ReserveForm = () => {
         <div className="col-10 col-md-8">
           <fieldset>
             <h3>When will you be dining with us?</h3>
-            <input
-              data-testid="date"
-              type="date"
-              required
-              value={formData.date}
-              min={formData.date}
-              onChange={handleDate}></input>
+            <div className="vFrame auto-space btn-group">
+              <label htmlFor="date-input">Enter Date<span> *</span></label>
+              <input
+                id="date-input"
+                ref={datebtn}
+                data-testid="date"
+                type="date"
+                required
+                value={formData.date}
+                min={formData.date}
+                onChange={handleDate}></input>
+            </div>
           </fieldset>
           <TimeSlotSelect timeSlots={timeSlots}/>
           <fieldset>
-            <h3>How many will be dining?</h3>
-            <input data-testid="dining" required type="number" min="2" max="10" value={formData.partyNum} onChange={changeDining}></input>
+            <h3>How many will be dining?<span> *</span></h3>
+            <input data-testid="dining" id="dining" required type="number" min="2" max="10" value={formData.partyNum} onChange={changeDining}></input>
           </fieldset>
           <fieldset>
             <h3>Will this be a special occasion?</h3>
@@ -153,20 +151,20 @@ const ReserveForm = () => {
             <h3>Please provide your contact information</h3>
             <div className="hFrameWrap auto-spread center">
               <div>
-                <label htmlFor="firstName">First Name</label>
+                <label htmlFor="firstName">First Name<span> *</span></label>
                 <input data-testid="firstName" id="firstName" required type="text" value={formData.firstName} onChange={changeFirstName}></input>
               </div>
               <div>
-                <label htmlFor="lastName">Last Name</label>
+                <label htmlFor="lastName">Last Name<span> *</span></label>
                 <input data-testid="lastName" id="lastName" required type="text" value={formData.lastName} onChange={changeLastName}></input>
               </div>
               <div>
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email">Email<span> *</span></label>
                 <input data-testid="email" id="email" required type="email" value={formData.email} onChange={changeEmail}></input>
               </div>
             </div>
           </fieldset>
-            <button data-testid="formbtn" type="submit">CONTINUE</button>
+            <button data-testid="formbtn" type="submit" aria-label="On Click" onClick={validate}>CONTINUE</button>
         </div>
       </form>
     </article>

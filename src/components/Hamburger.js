@@ -11,6 +11,7 @@ const Hamburger = () => {
 
   return (
     <Ham
+      aria-label="On Click"
       onClick={handleClick}
       className="hamburger" />
   )

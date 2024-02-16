@@ -16,13 +16,11 @@ const Confirm = () => {
     submitData(data)
       .then(response => {
         localStorage.setItem(data.date, JSON.stringify(timeSlots))
-        console.log('information submitted', response)
         navigate('/verify')
       })
       .catch(e => {
         navigate('/error')
       })
-    console.log('data', data)
   }
 
   const submitData = (data) => {
@@ -33,10 +31,8 @@ const Confirm = () => {
       }
       setTimeout(() => {
         if (success < 0.8) {
-          console.log('UPDATE', JSON.stringify(timeSlots))
           resolve(true)
         } else {
-          console.log('server error')
           reject(false)
         }
       }, Math.random() * 1000)
@@ -52,7 +48,7 @@ const Confirm = () => {
         <div className="col-8">
           <div className="hFrame auto-spread">
             <Link to="/reservations"><button>EDIT</button></Link>
-            <button onClick={confirmReservation}>CONFIRM</button>
+            <button aria-label="On Click" onClick={confirmReservation}>CONFIRM</button>
           </div>
         </div>
       </section>
