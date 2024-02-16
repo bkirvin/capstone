@@ -4,12 +4,17 @@ const GlobalContext = createContext()
 
 const GlobalProvider = ({children}) => {
 
+  const [ slotError, setSlotError ] = useState()
+  const [ firstNameError, setFirstNameError ] = useState()
+  const [ lastNameError, setLastNameError ] = useState()
+  const [ emailError, setEmailError ] = useState()
+
+
   const todayDate = () => {
     const date = new Date(Date.now())
     const year = date.toLocaleString('default', { year: 'numeric' })
     const month = date.toLocaleString('default', { month: '2-digit' })
     const day = date.toLocaleString('default', { day: '2-digit' })
-    console.log('date', [month, day, year].join('/'))
     return [year, month, day].join('-')
   }
 
@@ -52,10 +57,8 @@ const GlobalProvider = ({children}) => {
         }
         return nState
       case 'update':
-        console.log('UPDATING')
         slot = nState.find(x => x.selected)
         if (slot) {
-          console.log('slot found', slot)
           slot.reserved = true
           slot.selected = false
         }
@@ -197,6 +200,14 @@ const GlobalProvider = ({children}) => {
 
 
   const props = {
+    slotError,
+    setSlotError,
+    firstNameError,
+    setFirstNameError,
+    lastNameError,
+    setLastNameError,
+    emailError,
+    setEmailError,
     timeSlots,
     dispatch,
     occasions,

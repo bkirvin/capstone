@@ -11,7 +11,6 @@ const LinkList = () => {
   useEffect(() => {
     const anch = hash.slice(1); // Remove the '#' character from the hash
     if (anch) {
-      console.log('hash', anch)
       const element = document.getElementById(anch);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });

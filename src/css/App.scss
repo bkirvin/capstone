@@ -162,6 +162,10 @@ nav {
 h3 {
   font-weight: 500 !important;
   padding: 4vh 0;
+
+  span {
+    color: $my-alert;
+  }
 }
 
 .leading {
@@ -478,15 +482,33 @@ form {
     margin: 0 0 0 2vw;
     text-align: left;
     display: block;
+
+    span {
+      color: $my-alert;
+    }
   }
 
   h6 {
     text-align: left;
+
+    span {
+      color: $my-alert;
+    }
   }
 
   fieldset {
     margin: 5vh 0;
+
+    p {
+      color: $my-alert;
+      font-weight: 700;
+      min-height: 24px;
+    }
   }
+}
+
+.btn-group {
+  margin: 0 auto;
 }
 
 #timeslot {
@@ -495,17 +517,15 @@ form {
 
 .unavailable,
 .selected {
-  background-color: $my-alert;
   padding: 1vh 0;
   width: 26vw;
-  color: $my-tone;
+  color: $my-attention;
   font-weight: 700;
   text-shadow: 2px 2px 2px $my-black;
   font-size: 2em;
 }
 
 .selected {
-  background-color: $my-main;
   color: $my-neutral;
 }
 

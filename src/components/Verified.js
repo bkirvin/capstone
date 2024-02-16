@@ -8,7 +8,7 @@ const Verified = () => {
 
   useEffect (() => {
     clearForm()
-  }, [])
+  }, [clearForm])
   return (
     <div className="checked">
       <BigCheck />

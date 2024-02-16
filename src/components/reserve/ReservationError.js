@@ -1,4 +1,3 @@
-import BigCheck from '../BigCheck'
 import { useEffect } from 'react'
 import { useGlobalContext } from '../../providers/GlobalProvider'
 
@@ -8,7 +7,7 @@ const ReservationError = () => {
 
   useEffect (() => {
     clearForm()
-  }, [])
+  }, [clearForm])
   return (
     <div className="checked">
       <h3>Something went wrong!</h3>
